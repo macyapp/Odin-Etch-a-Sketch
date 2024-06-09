@@ -48,14 +48,14 @@ button.addEventListener("click", () => {
 });
 
 canvas.addEventListener("mousedown", (e) => {
-  if (e.target !== canvas) {
+  if (e.target !== canvas && e.target !== document.body) {
     isMouseDown = true;
     e.target.style.backgroundColor = "black";
   }
 });
 
 canvas.addEventListener("mouseover", (e) => {
-  if (isMouseDown && e.target !== canvas) {
+  if (isMouseDown && e.target !== canvas && e.target !== document.body) {
     e.target.style.backgroundColor = "black";
   }
 });
@@ -66,7 +66,7 @@ document.addEventListener("mouseup", () => {
 
 // Handle touch input
 canvas.addEventListener("touchstart", (e) => {
-  if (e.target !== canvas) {
+  if (e.target !== canvas && e.target !== document.body) {
     isMouseDown = true;
     e.target.style.backgroundColor = "black";
   }
@@ -76,7 +76,12 @@ canvas.addEventListener("touchstart", (e) => {
 canvas.addEventListener("touchmove", (e) => {
   const touch = e.touches[0];
   const target = document.elementFromPoint(touch.clientX, touch.clientY);
-  if (isMouseDown && target && target !== canvas) {
+  if (
+    isMouseDown &&
+    target &&
+    target !== canvas &&
+    e.target !== document.body
+  ) {
     target.style.backgroundColor = "black";
   }
   e.preventDefault(); // Prevent default behavior to avoid issues with touch scrolling
