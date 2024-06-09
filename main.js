@@ -63,3 +63,25 @@ canvas.addEventListener("mouseover", (e) => {
 document.addEventListener("mouseup", () => {
   isMouseDown = false;
 });
+
+// Handle touch input
+canvas.addEventListener("touchstart", (e) => {
+  if (e.target !== canvas) {
+    isMouseDown = true;
+    e.target.style.backgroundColor = "black";
+  }
+  e.preventDefault(); // Prevent default behavior to avoid issues with touch scrolling
+});
+
+canvas.addEventListener("touchmove", (e) => {
+  const touch = e.touches[0];
+  const target = document.elementFromPoint(touch.clientX, touch.clientY);
+  if (isMouseDown && target && target !== canvas) {
+    target.style.backgroundColor = "black";
+  }
+  e.preventDefault(); // Prevent default behavior to avoid issues with touch scrolling
+});
+
+document.addEventListener("touchend", () => {
+  isMouseDown = false;
+});
