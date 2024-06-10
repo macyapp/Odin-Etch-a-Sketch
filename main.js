@@ -1,4 +1,3 @@
-// Took me a substantial amount of time to figure this out.
 const canvas = document.createElement("div");
 const input = document.createElement("input");
 const button = document.createElement("button");
@@ -48,14 +47,14 @@ button.addEventListener("click", () => {
 });
 
 canvas.addEventListener("mousedown", (e) => {
-  if (e.target !== canvas && e.target !== document.body) {
+  if (e.target !== canvas && canvas.contains(e.target)) {
     isMouseDown = true;
     e.target.style.backgroundColor = "black";
   }
 });
 
 canvas.addEventListener("mouseover", (e) => {
-  if (isMouseDown && e.target !== canvas && e.target !== document.body) {
+  if (isMouseDown && e.target !== canvas && canvas.contains(e.target)) {
     e.target.style.backgroundColor = "black";
   }
 });
@@ -66,7 +65,7 @@ document.addEventListener("mouseup", () => {
 
 // Handle touch input
 canvas.addEventListener("touchstart", (e) => {
-  if (e.target !== canvas && e.target !== document.body) {
+  if (e.target !== canvas && canvas.contains(e.target)) {
     isMouseDown = true;
     e.target.style.backgroundColor = "black";
   }
@@ -80,7 +79,7 @@ canvas.addEventListener("touchmove", (e) => {
     isMouseDown &&
     target &&
     target !== canvas &&
-    target !== document.body
+    canvas.contains(target)
   ) {
     target.style.backgroundColor = "black";
   }
