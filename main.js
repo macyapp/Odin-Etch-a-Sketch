@@ -78,8 +78,8 @@ canvas.addEventListener("touchmove", (e) => {
   if (
     isMouseDown &&
     target &&
-    target !== canvas &&
-    canvas.contains(target)
+    canvas.contains(target) &&
+    target !== canvas
   ) {
     target.style.backgroundColor = "black";
   }
