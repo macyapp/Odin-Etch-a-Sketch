@@ -80,7 +80,7 @@ canvas.addEventListener("touchmove", (e) => {
     isMouseDown &&
     target &&
     target !== canvas &&
-    e.target !== document.body
+    target !== document.body
   ) {
     target.style.backgroundColor = "black";
   }
