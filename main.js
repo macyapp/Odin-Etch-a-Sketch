@@ -89,3 +89,11 @@ canvas.addEventListener("touchmove", (e) => {
 document.addEventListener("touchend", () => {
   isMouseDown = false;
 });
+
+// Trigger button click event when Enter key is pressed in the input field
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const clickEvent = new Event("click");
+    button.dispatchEvent(clickEvent);
+  }
+});
