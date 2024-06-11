@@ -1,11 +1,15 @@
+const h1 = document.createElement("h1");
 const canvas = document.createElement("div");
 const input = document.createElement("input");
 const button = document.createElement("button");
 button.textContent = "Create Grid";
+h1.textContent = "Odin Etch-a-Sketch";
 const rem = document.createElement("button");
+input.placeholder = "Enter a number (≤100)";
 rem.textContent = "Reset";
 canvas.style.cssText =
   "border: 2px solid black; width: 600px; height: 600px; background-color: lightgrey; margin-bottom: 10px";
+document.body.appendChild(h1);
 document.body.appendChild(canvas);
 document.body.appendChild(input);
 document.body.appendChild(button);
@@ -75,12 +79,7 @@ canvas.addEventListener("touchstart", (e) => {
 canvas.addEventListener("touchmove", (e) => {
   const touch = e.touches[0];
   const target = document.elementFromPoint(touch.clientX, touch.clientY);
-  if (
-    isMouseDown &&
-    target &&
-    canvas.contains(target) &&
-    target !== canvas
-  ) {
+  if (isMouseDown && target && canvas.contains(target) && target !== canvas) {
     target.style.backgroundColor = "black";
   }
   e.preventDefault(); // Prevent default behavior to avoid issues with touch scrolling
