@@ -9,7 +9,18 @@ input.placeholder = "Enter a number (≤100)";
 rem.textContent = "Reset";
 canvas.style.cssText =
   "border: 2px solid black; width: 600px; height: 600px; background-color: lightgrey; margin-bottom: 10px";
-document.body.appendChild(h1);
+canvas.style.display = "flex";
+canvas.style.justifyContent = "center";
+canvas.style.alignItems = "center";
+canvas.appendChild(h1);
+document.body.style.cssText = `
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  margin: 0;
+`;
 document.body.appendChild(canvas);
 document.body.appendChild(input);
 document.body.appendChild(button);
@@ -25,6 +36,9 @@ rem.addEventListener("click", () => {
 });
 
 button.addEventListener("click", () => {
+  canvas.style.removeProperty("display");
+  canvas.style.removeProperty("justifyContent");
+  canvas.style.removeProperty("alignItems");
   canvas.innerHTML = "";
   const limit = Number(input.value);
   input.value = "";
